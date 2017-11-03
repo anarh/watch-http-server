@@ -1,11 +1,11 @@
 {
-  "name": "watch-http-server",
+  "name": "watch-spa-http-server",
   "version": "0.7.6",
   "description": "a simple command-line http server with the built-in zero-configuration automatic page reloads.",
   "main": "./lib/http-server",
   "repository": {
     "type": "git",
-    "url": "git://github.com/gstack/watch-http-server.git"
+    "url": "git://github.com/anarh/watch-spa-http-server.git"
   },
   "keywords": [
     "cli",
@@ -19,6 +19,9 @@
     "test": "vows --spec --isolate"
   },
   "contributors": [
+    {
+      "name": "Addo Narh"
+    },
     {
       "name": "Charlie Robbins",
       "email": "charlie.robbins@gmail.com"
@@ -79,19 +82,19 @@
     "stylezero": "2.1.1"
   },
   "bugs": {
-    "url": "https://github.com/gstack/watch-http-server/issues"
+    "url": "https://github.com/anarh/watch-spa-http-server/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/gstack/watch-http-server/raw/master/LICENSE"
+      "url": "https://github.com/anarh/watch-spa-http-server/raw/master/LICENSE"
     }
   ],
   "analyze": false,
   "preferGlobal": "true",
   "bin": {
-    "watch-http-server": "./bin/http-server",
-    "watchhttpserver": "./bin/http-server",
-    "whs": "./bin/http-server"
+    "watch-spa-http-server": "./bin/http-server",
+    "watchspahttpserver": "./bin/http-server",
+    "wshs": "./bin/http-server"
   }
 }

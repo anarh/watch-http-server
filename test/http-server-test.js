@@ -1,9 +1,9 @@
 var assert = require('assert'),
-    path = require('path'),
-    fs = require('fs'),
-    vows = require('vows'),
-    request = require('request'),
-    httpServer = require('../lib/http-server');
+  path = require('path'),
+  fs = require('fs'),
+  vows = require('vows'),
+  request = require('request'),
+  httpServer = require('../lib/http-server');
 
 var root = path.join(__dirname, 'fixtures', 'root');
 

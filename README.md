@@ -1,6 +1,6 @@
-# watch-http-server: a command-line http server
+# watch-spa-http-server: a command-line http server
 
-`watch-http-server` is a simple, zero-configuration command-line http server.
+`watch-spa-http-server` is a simple, zero-configuration command-line http server.
 
 It simply injects a very small javascript include right before the body tag of your HTML documents, whereby
 a websocket connection is made on the host, triggering a reload of the page. Currently this happens when
@@ -14,22 +14,22 @@ Installation via `npm`.  If you don't have `npm` yet:
 
 Once you have `npm`:
 
-     npm install -g watch-http-server
+     npm install -g watch-spa-http-server
 
-This will install `watch-http-server` globally so that it may be run from the command line.
+This will install `watch-spa-http-server` globally so that it may be run from the command line.
 
 ## Usage:
 
-     watch-http-server [path] [options]
+     watch-spa-http-server [path] [options]
      (or alternatively, whs or watchhttpserver)
 
 `[path]` defaults to `./public` if the folder exists, and `./` otherwise.
 
 ## Usage
 
-### Starting watch-http-server locally
+### Starting watch-spa-http-server locally
 
-     node bin/watch-http-server
+     node bin/watch-spa-http-server
 
 *Now you can visit http://localhost:8080 to view your server*
 
@@ -48,6 +48,8 @@ This will install `watch-http-server` globally so that it may be run from the co
 `-s` or `--silent` Suppress log messages from output
 
 `--cors` Enable CORS via the `Access-Control-Allow-Origin` header
+
+`--push-state` Enable push state for single page apps. All 404's are sent to /index.html
 
 `-o` Open browser window after staring the server
 
