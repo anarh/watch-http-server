@@ -1,49 +1,47 @@
 #!/usr/bin/env node
 
-var colors = require('colors'),
-    httpServer = require('../lib/http-server'),
-    portfinder = require('portfinder'),
-    opener = require('opener'),
-    argv = require('optimist')
-      .boolean('cors')
-      .argv;
+var colors = require('colors');
+var httpServer = require('../lib/http-server');
+var portfinder = require('portfinder');
+var opener = require('opener');
+var argv = require('optimist').boolean('cors').argv;
 
 if (argv.h || argv.help) {
   console.log([
-    "usage: http-server [path] [options]",
-    "",
-    "options:",
-    "  -p                 Port to use [8080]",
-    "  -a                 Address to use [0.0.0.0]",
-    "  -d                 Show directory listings [true]",
-    "  -i                 Display autoIndex [true]",
-    "  -e --ext           Default file extension if none supplied [none]",
-    "  -s --silent        Suppress log messages from output",
-    "  --cors             Enable CORS via the 'Access-Control-Allow-Origin' header",
-    "  -o                 Open browser window after staring the server",
-    "  --push-state       Enable HTML5 push state mode where all URIs respond with index.html. [false]",
-    "  -c                 Cache time (max-age) in seconds [3600], e.g. -c10 for 10 seconds.",
-    "                     To disable caching, use -c-1.",
-    "",
-    "  -S --ssl           Enable https.",
-    "  -C --cert          Path to ssl cert file (default: cert.pem).",
-    "  -K --key           Path to ssl key file (default: key.pem).",
-    "",
-    "  -h --help          Print this list and exit."
+    'usage: http-server [path] [options]',
+    '',
+    'options:',
+    '  -p                 Port to use [8080]',
+    '  -a                 Address to use [0.0.0.0]',
+    '  -d                 Show directory listings [true]',
+    '  -i                 Display autoIndex [true]',
+    '  -e --ext           Default file extension if none supplied [none]',
+    '  -s --silent        Suppress log messages from output',
+    '  --cors             Enable CORS via the Access-Control-Allow-Origin header',
+    '  -o                 Open browser window after staring the server',
+    '  --push-state       Enable HTML5 push state mode where all URIs respond with index.html. [false]',
+    '  -c                 Cache time (max-age) in seconds [3600], e.g. -c10 for 10 seconds.',
+    '                     To disable caching, use -c-1.',
+    '',
+    '  -S --ssl           Enable https.',
+    '  -C --cert          Path to ssl cert file (default: cert.pem).',
+    '  -K --key           Path to ssl key file (default: key.pem).',
+    '',
+    '  -h --help          Print this list and exit.'
   ].join('\n'));
   process.exit();
 }
 
-var port = argv.p || parseInt(process.env.PORT, 10),
-    host = argv.a || '0.0.0.0',
-    log = (argv.s || argv.silent) ? (function () {}) : console.log,
-    ssl = !!argv.S || !!argv.ssl,
-    requestLogger;
+var port = argv.p || parseInt(process.env.PORT, 10);
+var host = argv.a || '0.0.0.0';
+var log = (argv.s || argv.silent) ? function () {} : console.log;
+var ssl = !!argv.S || !!argv.ssl;
+var requestLogger;
 
 if (!argv.s && !argv.silent) {
-  requestLogger = function(req) {
-    log('[%s] "%s %s" "%s"', (new Date).toUTCString(), req.method.cyan, req.url.cyan, req.headers['user-agent']);
-  }
+  requestLogger = function (req) {
+    log('[%s] "%s %s" "%s"', (new Date()).toUTCString(), req.method.cyan, req.url.cyan, req.headers['user-agent']);
+  };
 }
 
 if (!port) {
@@ -56,7 +54,7 @@ if (!port) {
   listen(port);
 }
 
-function listen(port) {
+function listen (port) {
   var options = {
     root: argv._[0],
     cache: argv.c,
@@ -85,13 +83,13 @@ function listen(port) {
   }
 
   var server = httpServer.createServer(options);
-  server.listen(port, host, function() {
+  server.listen(port, host, function () {
     var uri = [ssl ? 'https' : 'http', '://', host, ':', port].join('');
-    log('Starting up http-server, serving '.yellow
-      + server.root.cyan
-      + ((ssl) ? ' through'.yellow + ' https'.cyan : '')
-      + ' on: '.yellow
-      + uri.cyan);
+    log('Starting up http-server, serving '.yellow +
+      server.root.cyan +
+      ((ssl) ? ' through'.yellow + ' https'.cyan : '') +
+      ' on: '.yellow +
+      uri.cyan);
 
     log('Hit CTRL-C to stop the server');
     if (argv.o) {
