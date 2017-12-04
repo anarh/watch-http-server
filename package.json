@@ -1,6 +1,6 @@
 {
   "name": "watch-spa-http-server",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "a simple command-line http server with the built-in zero-configuration automatic page reloads.",
   "main": "./lib/http-server",
   "repository": {
