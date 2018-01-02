@@ -67,12 +67,12 @@
     }
   ],
   "dependencies": {
-    "chokidar": "^0.12.4",
+    "chokidar": "2.0.0",
     "colors": "1.0.3",
-    "sexstatic": "~0.6.x",
     "opener": "~1.4.0",
     "optimist": "0.6.x",
     "portfinder": "0.2.x",
+    "sexstatic": "~0.6.x",
     "union": "~0.4.3",
     "ws": "^0.6.3"
   },
